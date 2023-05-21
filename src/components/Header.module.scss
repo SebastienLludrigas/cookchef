@@ -22,7 +22,9 @@
   display: none;
   cursor: pointer;
   transition: opacity 0.2s;
-  opacity: 0.8;
+  &:hover {
+    opacity: 0.8;
+  }
   @include mixin.xs {
     display: block;
   }

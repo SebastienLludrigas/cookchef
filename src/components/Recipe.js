@@ -1,19 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Recipe.module.scss';
 
-function Recipe() {
+function Recipe({ title, image }) {
+  const[liked, setLiked] = useState(false);
+
+  const handleClick = () => setLiked(!liked);
+
   return (
-    <div className={styles.recipe}>
+    <div onClick={handleClick} className={styles.recipe}>
       <div className={styles.imageContainer}>
         <img
-          src="https://github.com/dymafr/react-chapitre05-cookchef-partie1/blob/master/src/assets/images/recette.jpg?raw=true"
+          src={ image }
           alt="recipe"
         />
       </div>
-      <div
-        className={`${styles.recipeTitle} d-flex flex-row justify-content-center align-items-center`}
-      >
-        <h3>Saumon et asperges</h3>
+      <div className={`${styles.recipeTitle} d-flex flex-column justify-content-center align-items-center`}>
+        <h3 className='mb-10'>{ title }</h3>
+        <i className={`fas fa-heart ${liked ? "text-primary" : ""}`}></i>
       </div>
     </div>
   );
